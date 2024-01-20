@@ -90,6 +90,31 @@ def check_token(client, message):
 
 
 
+@bot.on_message(filters.private & filters.document)
+async def check_tokens(client, message):
+    file_id = message.document.file_id
+    file_path = await client.download_media(file_id)
+    
+    with open(file_path, "r") as file:
+        tokens = file.readlines()
+        valid_tokens = []
+        for token in tokens:
+            if len(token.strip()) == 45:
+                try:
+                    newbot = Client("newbotcheck", api_id=api_id, api_hash=api_hash, bot_token=token)
+                    await newbot.start()
+                    valid_tokens.append(token())
+                    await newbot.stop()
+                except:
+                    pass
+        if valid_tokens:
+            response = "Valid tokens:\n" + "\n".join(valid_tokens)
+        else:
+            response = "No valid tokens found in the file."
+        await client.send_message(message.chat.id, response)
+
+
+
 # get the type of message
 def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
 	try:
