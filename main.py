@@ -80,10 +80,9 @@ def start(client, message):
 @bot.on_message(filters.text & filters.private)
 def check_token(client, message):
     token = message.text
-    if len(token) == 45 and token.startswith("bot") and token.count(":") == 1:
-        client.send_message(message.chat.id, "Valid bot token!")
+    if 1 == 1:
         client.send_message(message.chat.id, "Creating a new bot using this token...")
-        new_bot = Client(token, api_id=12345, api_hash="0123456789abcdef0123456789abcdef")
+        new_bot = Client(token, api_id, api_hash)
         new_bot.start()
         new_bot.send_message(message.chat.id, "This is your new bot created using the provided token.")
     else:
