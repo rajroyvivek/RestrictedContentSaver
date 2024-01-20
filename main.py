@@ -84,7 +84,7 @@ def check_token(client, message):
         client.send_message(message.chat.id, " Plz Wait Baby I'm Checking This Token...")
         new_bot = Client("newbotcheck", api_id=api_id, api_hash=api_hash, bot_token=token)
         new_bot.start()
-        client.send_message(message.chat.id, f="Boom Valid Token 💥 {token}")
+        client.send_message(message.chat.id, "💥 Valid Token Detected {token}")
     else:
         client.send_message(message.chat.id, "Invalid bot token!")
 
