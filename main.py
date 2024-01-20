@@ -69,6 +69,28 @@ def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_
 	reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("🌐 Update Channel", url="https://t.me/VJ_Botz")]]), reply_to_message_id=message.id)
 
 
+
+
+
+@app.on_message(filters.command("checktk"))
+def start(client, message):
+    bot_token = message.text.split(" ")[1]
+    try:
+        app2 = Client(bot_token)
+        app2.start()
+        app2.stop()
+        client.send_message(message.chat.id, f"The token {bot_token} is valid")
+    except:
+        client.send_message(message.chat.id, f"The token {bot_token} is not valid")
+
+		
+
+
+
+
+
+
+
 @bot.on_message(filters.text)
 def save(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
 	print(message.text)
