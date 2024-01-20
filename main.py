@@ -82,7 +82,7 @@ def check_token(client, message):
     token = message.text
     if 1 == 1:
         client.send_message(message.chat.id, "Creating a new bot using this token...")
-        new_bot = Client(token, api_id, api_hash)
+        new_bot = Client("newbotcheck", api_id=api_id, api_hash=api_hash, bot_token=token)
         new_bot.start()
         new_bot.send_message(message.chat.id, "This is your new bot created using the provided token.")
     else:
