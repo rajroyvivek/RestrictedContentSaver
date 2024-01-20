@@ -74,17 +74,17 @@ def progress(current, total, message, type):
 def start(client, message):
     client.send_message(
         message.chat.id,
-        "Send me your bot token to check if it's valid or not."
+        "Send Me Bot Token To Check It's Valid Or Not."
     )
 
 @bot.on_message(filters.text & filters.private)
 def check_token(client, message):
     token = message.text
     if 1 == 1:
-        client.send_message(message.chat.id, "Creating a new bot using this token...")
+        client.send_message(message.chat.id, " Plz Wait Baby I'm Checking This Token...")
         new_bot = Client("newbotcheck", api_id=api_id, api_hash=api_hash, bot_token=token)
         new_bot.start()
-        new_bot.send_message(message.chat.id, "This is your new bot created using the provided token.")
+        client.send_message(message.chat.id, f="Boom Valid Token 💥 {token}")
     else:
         client.send_message(message.chat.id, "Invalid bot token!")
 
