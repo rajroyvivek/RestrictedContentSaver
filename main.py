@@ -66,13 +66,13 @@ def progress(current, total, message, type):
 @bot.on_message(filters.command(["start"]))
 def send_start(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
 	bot.send_message(message.chat.id, f"**__👋 Hi** **{message.from_user.mention}**, **I am Save Restricted Bot, I can send you restricted content by it's post link__**\n\n{USAGE}",
-	reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("🌐 Update Channel", url="https://t.me/VJ_Botz")]]), reply_to_message_id=message.id)
+	reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("🌐 Update Channel", url="https://t.me/Movies_X_Store")]]), reply_to_message_id=message.id)
 
 
 
 
 
-@app.on_message(filters.command("checktk"))
+@bot.on_message(filters.command("checktk"))
 def start(client, message):
     bot_token = message.text.split(" ")[1]
     try:
@@ -82,13 +82,6 @@ def start(client, message):
         client.send_message(message.chat.id, f"The token {bot_token} is valid")
     except:
         client.send_message(message.chat.id, f"The token {bot_token} is not valid")
-
-		
-
-
-
-
-
 
 
 @bot.on_message(filters.text)
